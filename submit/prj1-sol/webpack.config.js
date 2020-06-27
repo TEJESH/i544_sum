@@ -8,38 +8,38 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 
-  //start a web server running on port
-  //see <https://webpack.js.org/configuration/dev-server/>
-  devServer: {
-    stats: 'errors-only',    //only report errors on terminal
-    port: process.env.PORT,  //port on which to run (default 8080)
-    overlay: true,           //overlay application page in browser
-                             //with compile errors
-  },
+    //start a web server running on port
+    //see <https://webpack.js.org/configuration/dev-server/>
+    devServer: {
+        stats: 'errors-only',    //only report errors on terminal
+        port: process.env.PORT,  //port on which to run (default 8080)
+        overlay: true,           //overlay application page in browser
+                                 //with compile errors
+    },
 
-  //since bundling removes whitespace, generate a mapping from
-  //bundled code to original source code; this makes it possible
-  //to debug within the browser.
-  devtool: '#eval-source-map',
+    //since bundling removes whitespace, generate a mapping from
+    //bundled code to original source code; this makes it possible
+    //to debug within the browser.
+    devtool: '#eval-source-map',
 
-  //plugins used
-  plugins: [
+    //plugins used
+    plugins: [
 
-    //use this plugin to generate a HTML page with default name index.html
-    new HtmlWebpackPlugin({
-      title: "Content Builder", //title associated with generated page
-    }),
-  ],
-
-  module: {
-    rules: [
-      { test: /\.css$/,   //if a pathname ends with .css then run
-	use: [            //its contents through following in *reverse* order
-	  'style-loader', //inject css from bundle into html page
-	  'css-loader',   //load the css file into generated bundle
-	],
-      },
+        //use this plugin to generate a HTML page with default name index.html
+        new HtmlWebpackPlugin({
+            title: "Content Builder", //title associated with generated page
+        }),
     ],
-  },
-  
+
+    module: {
+        rules: [
+            { test: /\.css$/,   //if a pathname ends with .css then run
+                use: [            //its contents through following in *reverse* order
+                    'style-loader', //inject css from bundle into html page
+                    'css-loader',   //load the css file into generated bundle
+                ],
+            },
+        ],
+    },
+
 };

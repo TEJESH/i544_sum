@@ -103,7 +103,19 @@ function header(meta, path, $element) {
 }
 
 function input(meta, path, $element) {
+  //{ type: 'input', attr: Attr, items: List<Content>, }
   //@TODO
+
+  if (meta.text !== undefined) {
+    $element.append(makeElement('span', meta.attr).text(meta.text));
+
+    //$element.append(makeElement('span', meta.attr).items(meta.items));
+  }
+  else {
+    items('span', meta, path, $element);
+
+  }
+
 }
 
 function link(meta, path, $element) {
@@ -115,26 +127,47 @@ function link(meta, path, $element) {
 
 function multiSelect(meta, path, $element) {
   //@TODO
+  if (meta.text !== undefined) {
+    $element.append(makeElement('span', meta.attr).text(meta.text));
+    //$element.append(makeElement('span', meta.attr).text(meta.text));
+  }
+  else {
+    items('span', meta, path, $element);
+    //items('span', meta, path, $element);
+
+  }
 }
 
 function para(meta, path, $element) { items('p', meta, path, $element); }
 
 function segment(meta, path, $element) {
   if (meta.text !== undefined) {
-    $element.append(makeElement('span', meta.attr).text(meta.text));
+    $element.append(makeElement('p', meta.attr).text(meta.text));
   }
   else {
-    items('span', meta, path, $element);
+    items('p', meta, path, $element);
   }
 }
 
 
 function submit(meta, path, $element) {
   //@TODO
+  if (meta.text !== undefined) {
+    $element.append(makeElement('p', meta.attr).text(meta.text));
+  }
+  else {
+    items('p', meta, path, $element);
+  }
 }
 
 function uniSelect(meta, path, $element) {
   //@TODO
+  if (meta.text !== undefined) {
+    $element.append(makeElement('span', meta.attr).text(meta.text));
+  }
+  else {
+    items('span', meta, path, $element);
+  }
 }
 
 
